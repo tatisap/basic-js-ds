@@ -69,12 +69,12 @@ class BinarySearchTree {
       node.left.parent = node.parent;
       if(this.root().data !== data) node.parent[node.position] = node.left;
     } else if(node.left !== null && node.right !== null) {
-      let minSubNode = node;
+      let minSubNode = node.right;
       while (minSubNode.left !== null) {
         minSubNode = minSubNode.left;
       }
+      this.remove(minSubNode.data);
       node.data = minSubNode.data;
-      minSubNode.parent[minSubNode.position] = null;
     }
 
     this.data = [];
